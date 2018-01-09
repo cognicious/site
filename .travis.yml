@@ -18,6 +18,8 @@ addons:
     packages:
     - g++-4.8
   ssh_known_hosts: github.com
+before_install:
+- npm install
 before_script:
 - git config --global user.name 'Cognicious Bot'
 - git config --global user.email 'info@cognicio.us'
