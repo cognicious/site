@@ -6,7 +6,7 @@
     "version": "3.4.4"
   },
   "scripts": {
-    "build": "hexo generate",
+    "generate": "hexo generate",
     "deploy": "hexo deploy --silent"
   },
   "dependencies": {

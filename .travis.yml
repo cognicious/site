@@ -23,9 +23,8 @@ before_install:
 before_script:
 - git config --global user.name 'Cognicious Bot'
 - git config --global user.email 'info@cognicio.us'
-- sed -i'' "s~git@github.com:cognicious/cognicious.github.io.git~https://${GH_TOKEN}:x-oauth-basic@github.com/cognicious/cognicious.github.io.git~"
-  _config.yml
+- sed -i'' "s~git@github.com:cognicious/cognicious.github.io.git~https://${GH_TOKEN}:x-oauth-basic@github.com/cognicious/cognicious.github.io.git~" _config.yml
 install:
-- npm run build
+- npm run generate
 script:
 - npm run deploy
