@@ -1,7 +1,7 @@
 #!/bin/bash
 # Decrypt the private key
 # See https://github.com/alrra/travis-scripts/blob/master/doc/github-deploy-keys.md
-openssl aes-256-cbc -K $encrypted_502c4417840e_key -iv $encrypted_502c4417840e_iv -in github_deploy_key.enc -out github_deploy_key -d && \
+openssl aes-256-cbc -K $encrypted_502c4417840e_key -iv $encrypted_502c4417840e_iv -in .travis/github_deploy_key.enc -out ~/.ssh/id_rsa -d && \
 # Set the permission of the key
 chmod 600 ~/.ssh/id_rsa && \
 # Start SSH agent
