@@ -1,16 +1,9 @@
 #!/bin/bash
 # Decrypt the private key
 # openssl aes-256-cbc -e -in github_deploy_key.pub -out github_deploy_key.enc -K $enc_key -iv $enc_iv
-openssl aes-256-cbc -in .ci/github_deploy_key.enc -out ~/.ssh/id_rsa -K $enc_key -iv $enc_iv -d && \
-# Set the permission of the key
-chmod 600 ~/.ssh/id_rsa && \
-# Start SSH agent
-eval $(ssh-agent) && \
-# Add the private key to the system
-ssh-add ~/.ssh/id_rsa && \
-# Copy SSH config
-cp .ci/ssh_config ~/.ssh/config && \
+openssl aes-256-cbc -in .ci/github_deploy_key.enc -out github_deploy_key.pub -K $enc_key -iv $enc_iv -d && \
 # Set Git config
+git config core.sshCommand 'ssh -i $PWD/github_deploy_key.pub'
 git config --global user.name "Cognicious Bot" && \
 git config --global user.email 'info@cognicio.us' && \
 # Clone the repository
