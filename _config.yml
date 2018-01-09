@@ -78,5 +78,5 @@ theme: ochuunn
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/cognicious/cognicious.github.io.git
+  repo: git@github.com:cognicious/cognicious.github.io.git
   branch: master
