@@ -1,7 +1,7 @@
 #!/bin/bash
 # Decrypt the private key
 # openssl aes-256-cbc -e -in github_deploy_key.pub -out github_deploy_key.enc -k $enc_key
-openssl aes-256-cbc -K $enc_key -in .ci/github_deploy_key.enc -out ~/.ssh/id_rsa -d && \
+openssl aes-256-cbc -in .ci/github_deploy_key.enc -out ~/.ssh/id_rsa -k $enc_key && \
 # Set the permission of the key
 chmod 600 ~/.ssh/id_rsa && \
 # Start SSH agent
