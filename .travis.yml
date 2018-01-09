@@ -1,32 +1,29 @@
 language: node_js
-
 sudo: false
-
 node_js:
-  - "node"
-
+- node
 cache:
   apt: true
   directories:
-    - node_modules
-
+  - node_modules
 env:
+  matrix:
   - CXX=g++-4.8
-
+  global:
+    secure: S+/FiEH/5U0f3bNQMLlstccVMB/jvZqeyZsXnU8hsH+o/mtDLOGSS6roAP86yN4Nid9bU+ni9SolgA3rmpmQvZtT1GH5lJQJCjOAtoFRJi0EQ67f17bEVrZvcc55cq3qOIltX0adSxzviXAKHcLVB7I3y9aA5HVqoHUVZqOuQ6+jElnQ/9yppDzh/dwm6M1nEILOzpGP9fO62LPJwxwL/hzRbcqrXMju1nw/k8gvUA7awfBjDWibMWWYtayKwRCwYwfJj1q1Cb4rgq7261IX1zocK34gE3hhzODMmrggsCCvRYnEqMyjnFNQepnkvq7HxbnEwMqUmtcYq8RtvYZ3SgeTAYD8bDh1HCGOSdJzDOoX3Vgq2bhcFZ9rV1A+LNmBNpKM+guvPKrQqnDbyfGEYhwUwLUnEFPVk2RWMx6KkCOv2eNCCWmJEGi421MGGd5mR8GYsU67wg/0iVzVzKKVh44CeOBQiJhs18c4sUEI7exF6+bl6ZYiJIS0c8Zi1RFWLnNmolxejFPBkGIeDmhHkRPIRgWI3rrHbTkoO7lleOTGF58BGXDUNy4Q11gmdK2HHcbDIPiqlgVmY8WFwRmk42ESN0OBoZ1osHJWFKF8INqZU4GJo/Li/FrPSJWcGt6Snk6ZcTwoOCV1H1Jw/N5L79EgNuov6B+Iw3MlV+86FpU=
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
+    - g++-4.8
   ssh_known_hosts: github.com
-
+before_script:
+- git config --global user.name 'Cognicious Bot'
+- git config --global user.email 'info@cognicio.us'
+- sed -i'' "s~git@github.com:cognicious/cognicious.github.io.git~https://${GH_TOKEN}:x-oauth-basic@github.com/cognicious/cognicious.github.io.git~"
+  _config.yml
+install:
+- npm run build
 script:
-  - npm run build
-
-deploy:
-  provider: script
-  script: .travis/deploy.sh
-  skip_cleanup: true
-  on:
-    branch: master
+- npm run deploy
