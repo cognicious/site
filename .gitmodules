@@ -1,0 +1,4 @@
+[submodule "themes/ochuunn"]
+	path = themes/ochuunn
+	url = https://github.com/danielef/hexo-theme-ochuunn
+	branch = master
