@@ -1,5 +1,0 @@
-Host github.com
-	User git
-	StrictHostKeyChecking no
-	IdentityFile ~/github_deploy_key.pub
-	IdentitiesOnly yes
